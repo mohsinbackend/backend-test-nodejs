@@ -2,23 +2,18 @@ import { Film } from './entities/film.entity';
 
 import { CreateFilmDto } from './dto/create-film.dto';
 import { UpdateFilmDto } from './dto/update-film.dto';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { HttpException, HttpStatus, Injectable,Inject, NotFoundException } from '@nestjs/common';
+import {Injectable,Inject, NotFoundException } from '@nestjs/common';
 
 
 
 @Injectable()
 export class FilmsService {
 
-
-
   constructor(
     @Inject('FILM_REPOSITORY')
     private filmRepository: Repository<Film>,
   ) {}
-
-
 
   async create(film: CreateFilmDto): Promise<Film> {
 
