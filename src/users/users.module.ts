@@ -10,18 +10,6 @@ import { jwtConstants } from 'src/constants';
 @Module({
   imports: [
     DatabaseModule,
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: {
-        expiresIn: '60d'
-      },
-    }),
-    // JwtModule.register({
-    //   global: true,
-    //   //secret: process.env.SECRET,
-    //   secret:"adfkjadklfjaksdjflkadsjflkkjasdklfjkalsdsjflkadsjflkjadslkfjdlkasfj",
-    //   signOptions: { expiresIn: '20m' },
-    // }),
   ],
   controllers: [UsersController],
   providers: [...userProviders,UsersService,JwtService],
