@@ -1,18 +1,8 @@
 import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn} from "typeorm";
 
-// enum Genres {
-//     Horror,
-//     Thriller,
-//     Action,
-//     Drama,
-//     Comedy,
-//     Science_Fiction,
-// }
-
-
 @Entity('films')
-export class Film{
-    
+export class Film {
+
     @PrimaryGeneratedColumn()
     id: number
 
