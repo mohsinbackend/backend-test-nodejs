@@ -7,7 +7,6 @@ global. fetch = require('node-fetch')
 
 
 
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule,{
     bodyParser: true,
@@ -15,8 +14,8 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(3000)
-  .then(()=>{ console.log(`Server successfully started on 3000 port.`) })
+  await app.listen(process.env.PORT)
+  .then(()=>{ console.log(`Server successfully started on ${process.env.PORT} port.`) })
   .catch(err=>{ console.log(`Server faild error===============> `,err);  })
 
 }
