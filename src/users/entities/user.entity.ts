@@ -1,6 +1,6 @@
-import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn,OneToMany} from "typeorm";
-
+import { Rate } from "src/rates/entities/rate.entity";
 import { Comment } from "src/comments/entities/comment.entity";
+import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn,OneToMany} from "typeorm";
 
 @Entity('users')
 export class User {
@@ -22,6 +22,9 @@ export class User {
  
     @UpdateDateColumn()
     updatedAt: Date;
+
+    @OneToMany(() => Rate, (rate) => rate.user)
+    rates: Rate[]
 
     @OneToMany(() => Comment, (comment) => comment.user)
     comments: Comment[]

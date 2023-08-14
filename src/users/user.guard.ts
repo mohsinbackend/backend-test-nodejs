@@ -1,15 +1,14 @@
-import {
-    CanActivate,
-    ExecutionContext,
-    Injectable,
-    UnauthorizedException,
-  } from '@nestjs/common';
-  import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
+import { JwtService } from '@nestjs/jwt';
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException} from '@nestjs/common';
+
   
   @Injectable()
   export class UserGuard implements CanActivate {
-    constructor(private jwtService: JwtService) {}
+
+    constructor(
+      private jwtService: JwtService,
+    ) {}
   
     async canActivate(context: ExecutionContext): Promise<boolean> {
       console.log('canActivate function');
@@ -27,7 +26,12 @@ import { Request } from 'express';
         );
         // 💡 We're assigning the payload to the request object here
         // so that we can access it in our route handlers
+        
+        // const user = await this.usersService.findOne(payload.id);
+        // if (!user) { throw new NotFoundException('User Id does not exist!'); } 
         request['user'] = payload;
+        //request['authId'] = payload.id;
+          
       } catch {
         throw new UnauthorizedException();
       }

@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
-import { Injectable,Inject } from '@nestjs/common';
+import { Injectable,Inject, NotFoundException } from '@nestjs/common';
 import { LoginUserDto } from './dto/login-user.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { Repository } from 'typeorm';
@@ -23,6 +23,7 @@ export class UsersService {
     if(!user || !await bcrypt.compare(loginUserDto.password,user.password)){
       throw new UnauthorizedException(`Invalid Creadentials!`)
     }else{
+
 
       const payload = { id:user.id,name:user.name,email:user.email };
       return {
@@ -48,6 +49,12 @@ export class UsersService {
 
 
   }
+
+
+  async findOne(id: number) : Promise<User>  {
+    return this.userRepository.findOne({ where:{id }});
+  }
+
 
 
 
