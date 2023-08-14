@@ -8,11 +8,12 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { CommentsModule } from './comments/comments.module';
 import { RatesModule } from './rates/rates.module';
+import { ElasticSearchModule } from './elastic-search/elastic-search.module';
 
 
 @Module({
   controllers: [AppController],
   providers: [AppService],
-  imports: [ConfigModule.forRoot(),TypeOrmModule,DatabaseModule,FilmsModule, UsersModule, CommentsModule, RatesModule],
+  imports: [ConfigModule.forRoot(),TypeOrmModule,DatabaseModule,FilmsModule, UsersModule, CommentsModule, RatesModule, ElasticSearchModule],
 })
 export class AppModule {}
