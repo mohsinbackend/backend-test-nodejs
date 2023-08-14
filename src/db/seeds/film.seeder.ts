@@ -101,7 +101,6 @@ export default class FilmSeeder implements Seeder {
                 release_date:"2023-09-12",
                 description:"On the brink of losing her home, Maddie finds an intriguing job listing: helicopter parents looking for someone to bring their introverted 19-year-old son out of his shell before college. She has one summer to make him a man or die trying."
             },
-            
             {
                 id:10,
                 rating:8.0,

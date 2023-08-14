@@ -1,6 +1,6 @@
 import { Rate } from "src/rates/entities/rate.entity";
 import { Comment } from "src/comments/entities/comment.entity";
-import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn,OneToMany} from "typeorm";
+import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn,OneToMany,Index} from "typeorm";
 
 @Entity('films')
 export class Film {
@@ -8,9 +8,12 @@ export class Film {
     @PrimaryGeneratedColumn()
     id: number
 
+
+    @Index({ fulltext: true })
     @Column({nullable: false})
     name: string
     
+    @Index({ fulltext: true })
     @Column("text")
     description: string
     
