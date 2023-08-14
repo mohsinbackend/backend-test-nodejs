@@ -1,11 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { Request } from 'express';
+import { REQUEST } from '@nestjs/core';
 import { CreateRateDto } from './dto/create-rate.dto';
 import { UpdateRateDto } from './dto/update-rate.dto';
+import { Inject, Injectable, Scope } from '@nestjs/common';
 
-@Injectable()
+
+@Injectable({ scope: Scope.REQUEST })
 export class RatesService {
+
+  constructor(@Inject(REQUEST) private readonly request: Request) {}
+
   create(createRateDto: CreateRateDto) {
-    return 'This action adds a new rate';
+    return {authUser:this.request.user}
+
   }
 
   findAll() {
