@@ -2,7 +2,7 @@ import { Film } from './entities/film.entity';
 
 import { CreateFilmDto } from './dto/create-film.dto';
 import { UpdateFilmDto } from './dto/update-film.dto';
-import { Repository } from 'typeorm';
+import { Repository,Like } from 'typeorm';
 import {Injectable,Inject, NotFoundException } from '@nestjs/common';
 
 
@@ -14,6 +14,24 @@ export class FilmsService {
     @Inject('FILM_REPOSITORY')
     private filmRepository: Repository<Film>,
   ) {}
+
+  async searchByNameDiscrip(query): Promise<Film[]> {
+
+    return this.filmRepository.createQueryBuilder('film')
+    .orWhere('film.name like :query',{query: `%${query}%`})
+    .orWhere('film.description like :query',{query: `%${query}%`})   
+    .getMany();
+    
+    
+    // return this.filmRepository.find({
+    //   where: {
+    //     //name: Like(`%${query}%`),
+    //     description: Like(`%${query}%`)
+    //   },
+    // });
+
+  }
+
 
   async create(film: CreateFilmDto): Promise<Film> {
 

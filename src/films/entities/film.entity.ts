@@ -8,7 +8,6 @@ export class Film {
     @PrimaryGeneratedColumn()
     id: number
 
-
     @Index({ fulltext: true })
     @Column({nullable: false})
     name: string
