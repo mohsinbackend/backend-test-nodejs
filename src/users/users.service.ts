@@ -27,7 +27,7 @@ export class UsersService {
       const payload = { id:user.id,name:user.name,email:user.email };
       return {
         user:payload,
-        access_token: await this.jwtService.signAsync(payload,{secret:process.env.PORT,expiresIn:process.env.JWT_EXPIRES})
+        access_token: await this.jwtService.signAsync(payload,{secret:process.env.JWT_SECRET,expiresIn:process.env.JWT_EXPIRES})
       };
     }
 

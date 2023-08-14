@@ -31,7 +31,6 @@ export class Film {
     @Column({name:'genre',type:'enum',enum: ['Action','Horror','Thriller','Drama','Comedy','Science Fiction'] })
     genre:string
   
-
     @CreateDateColumn()
     createdAt: Date;
  

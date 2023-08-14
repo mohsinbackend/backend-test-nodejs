@@ -1,13 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { RatesService } from './rates.service';
 import { CreateRateDto } from './dto/create-rate.dto';
 import { UpdateRateDto } from './dto/update-rate.dto';
+import { UserGuard } from 'src/users/user.guard';
+import { Controller, Get, Post, Body, Patch, Param, Delete,UseGuards } from '@nestjs/common';
 
 @Controller('rates')
 export class RatesController {
   constructor(private readonly ratesService: RatesService) {}
 
   @Post()
+  @UseGuards(UserGuard)
   create(@Body() createRateDto: CreateRateDto) {
     return this.ratesService.create(createRateDto);
   }
