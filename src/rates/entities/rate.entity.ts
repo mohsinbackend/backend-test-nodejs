@@ -30,7 +30,6 @@ export class Rate {
 
     @ManyToOne(() => User, (user) => user.rates)
     @JoinColumn({name:'userId'})
-    
     user: User
 
 }

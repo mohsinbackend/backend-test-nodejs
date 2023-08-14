@@ -20,8 +20,8 @@ export class RatesService {
 
   async create(createRateDto: CreateRateDto) {
     
-    const {filmId} = createRateDto
-    const {userId} = this.request.user['id'];
+    const {filmId,rating}=createRateDto
+    const userId = this.request.user['id'];
 
     const film = await this.filmRepository.findOne({ where:{id:filmId}});
     if (!film) { throw new NotFoundException('Film Id does not exist!'); } 
@@ -35,9 +35,9 @@ export class RatesService {
 
 
     const _rate = new Rate();
-    _rate.filmId = createRateDto.filmId;
-    _rate.rating = createRateDto.rating;
-    _rate.userId = this.request.user['id'];
+    _rate.filmId = filmId;
+    _rate.rating = rating;
+    _rate.userId = userId;
     await this.rateRepository.save(_rate);
     return _rate;
 
