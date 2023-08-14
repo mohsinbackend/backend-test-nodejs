@@ -8,7 +8,7 @@ export class Film {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({nullable: false})
     name: string
     
     @Column("text")
@@ -17,7 +17,7 @@ export class Film {
     @Column({type:'date'})
     release_date:string
     
-    @Column({type:"decimal",precision:1,scale:1})
+    @Column({type:"decimal",precision:2,scale:1})
     rating:number 
     
     @Column({type:"decimal",precision:5,scale:2})
@@ -29,7 +29,7 @@ export class Film {
     @Column()
     photo: string
 
-    @Column({name:'genre',type:'enum',enum: ['Action','Horror','Thriller','Drama','Comedy','Science Fiction'] })
+    @Column({name:'genre',type:'enum',enum: ['Action','Horror','Thriller','Drama','Comedy','Science Fiction','Animation','Adventure'] })
     genre:string
   
     @CreateDateColumn()

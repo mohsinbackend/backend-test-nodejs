@@ -15,7 +15,7 @@ export class Rate {
     @Column({ type: 'number' })
     userId: number;
 
-    @Column({type:"decimal",precision:1,scale:1})
+    @Column({type:"decimal",precision:2,scale:1})
     rating:number
 
     @CreateDateColumn()

@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm';
+import { runSeeders } from 'typeorm-extension';
 
 export const databaseProviders = [
   {
@@ -16,7 +17,20 @@ export const databaseProviders = [
         ],
         synchronize: true,
       });
-      return dataSource.initialize();
+      
+      //return dataSource.initialize();
+
+      const initialized = await dataSource.initialize();
+
+      await runSeeders(dataSource, {
+        seeds: ['src/db/seeds/*{.ts,.js}'],
+        factories: ['src/db/factories/*{.ts,.js}']
+      });
+      return initialized;
+
+      
+      //return dataSource.initialize();
+    
     },
   },
 ];
