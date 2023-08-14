@@ -6,7 +6,6 @@ import { RegisterUserDto } from './dto/register-user.dto';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ConflictException,HttpStatus,UnauthorizedException } from '@nestjs/common';
-import jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UsersService {
@@ -28,7 +27,7 @@ export class UsersService {
       const payload = { id:user.id,name:user.name,email:user.email };
       return {
         user:payload,
-        access_token: await this.jwtService.signAsync(payload,{secret:process.env.PORT,expiresIn:'15m',})
+        access_token: await this.jwtService.signAsync(payload,{secret:process.env.PORT,expiresIn:'24h',})
       };
     }
 

@@ -6,11 +6,12 @@ import { DatabaseModule } from './db/database.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
+import { CommentsModule } from './comments/comments.module';
 
 
 @Module({
   controllers: [AppController],
   providers: [AppService],
-  imports: [ConfigModule.forRoot(),TypeOrmModule,DatabaseModule,FilmsModule, UsersModule],
+  imports: [ConfigModule.forRoot(),TypeOrmModule,DatabaseModule,FilmsModule, UsersModule, CommentsModule],
 })
 export class AppModule {}
