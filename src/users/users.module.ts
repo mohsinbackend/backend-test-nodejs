@@ -3,8 +3,7 @@ import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { userProviders } from './user.providers';
 import { DatabaseModule } from 'src/db/database.module';
-import { JwtModule,JwtService } from '@nestjs/jwt';
-import { jwtConstants } from 'src/constants';
+import { JwtService } from '@nestjs/jwt';
 
 
 @Module({
