@@ -21,7 +21,7 @@ import { Request } from 'express';
         const payload = await this.jwtService.verifyAsync(
           token,
           {
-            secret: process.env.PORT
+            secret: process.env.JWT_SECRET
           }
         );
         // 💡 We're assigning the payload to the request object here

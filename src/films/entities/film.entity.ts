@@ -1,4 +1,5 @@
-import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn} from "typeorm";
+import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn,OneToMany} from "typeorm";
+import { Comment } from "src/comments/entities/comment.entity";
 
 @Entity('films')
 export class Film {
@@ -9,7 +10,7 @@ export class Film {
     @Column()
     name: string
     
-    @Column()
+    @Column("text")
     description: string
     
     @Column({type:'date'})
@@ -36,5 +37,9 @@ export class Film {
  
     @UpdateDateColumn()
     updatedAt: Date;
+
+    @OneToMany(() => Comment, (comment) => comment.film)
+    comments: Comment[]
+
 
 }
